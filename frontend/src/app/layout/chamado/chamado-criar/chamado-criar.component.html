@@ -1,0 +1,25 @@
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">
+        <b>Criação de chamado</b>
+    </li>
+</ol>
+<div [formGroup]="formChamado">
+    <div class="row">
+        <div class="col-sm-12">
+            <label>Titulo do chamado</label><br>
+            <input class="form-control" formControlName="titulo" type="text-area"/>
+        </div>
+        <div class="col-sm-12">
+            <label>Descrição do chamado</label><br>
+            <textarea class="form-control" maxlength="{{maxDescription}}" class="form-control" formControlName="descricao"></textarea>
+            <div class="text-right">restam {{charsLeft()}} caracteres</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 text-right">
+            <button class="btn btn-success" style="margin-top: 10px;" (click)="criar()" 
+            [disabled]="formChamado.invalid">
+            <i class="fa fa-check"></i> Criar</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<div *ngIf="chamados">
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">
+            <b>Chamados cadastrados</b>
+        </li>
+    </ol>
+    <div *ngIf="temChamados()" class="table-responsive ">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Numero</th>
+                    <th>Título</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let chamado of chamados">
+                    <td>{{chamado.id}}</td>
+                    <td>{{chamado.titulo}}</td>
+                    <td>
+                        <span class="badge" [ngClass]="getClass(chamado.status.codigo)">{{chamado.status.descricao}}</span>
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-primary"
+                            [routerLink]="['/chamados/editar',chamado.id]">
+                            <i class="fa fa-pencil"></i> Editar
+                        </button>
+                    </td>
+                </tr>
+                <div *ngIf="!temChamados()">
+                    Nenhum chamado cadastrado
+                </div>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 text-right">
+            <button class="btn btn-primary" style="margin-top: 10px;" 
+            [routerLink]="['/chamados/criar']">
+            <i class="fa fa-plus"></i> Criar novo chamado</button>
+        </div>
+    </div>
+
+</div>
